@@ -1,0 +1,101 @@
+### ================== VARIABLES ==================
+@baseUrl = http://localhost:5001/api
+@search = 
+@sortBy = first_name
+@order = asc
+@page = 1
+@limit = 10
+
+### ================== CUSTOMER API TESTS ==================
+
+# Create a new customer
+POST {{baseUrl}}/customers1
+Content-Type: application/json
+
+{
+  "first_name": "Satish",
+  "last_name": "Gouni",
+  "phone_number": "9998887776"
+}
+
+###
+
+# Get all customers
+GET {{baseUrl}}/customers1
+Content-Type: application/json
+
+###
+
+# Debug - get customers with addresses
+GET {{baseUrl}}/debug
+Content-Type: application/json
+
+###
+
+# Get all customers (with dynamic search, sort, pagination)
+GET {{baseUrl}}/customers1?search={{search}}&sortBy={{sortBy}}&order={{order}}&page={{page}}&limit={{limit}}
+Content-Type: application/json
+
+###
+
+# Get single customer by ID
+GET {{baseUrl}}/customers1/1
+Content-Type: application/json
+
+###
+
+# Update customer
+PUT {{baseUrl}}/customers1/1
+Content-Type: application/json
+
+{
+  "first_name": "John Updated",
+  "last_name": "Doe",
+  "phone_number": "9876543210"
+}
+
+###
+
+# Delete a customer
+DELETE {{baseUrl}}/customers1/1
+Content-Type: application/json
+
+###
+
+### ================== ADDRESS API TESTS ==================
+
+# Add new address for customer 1
+POST {{baseUrl}}/customers1/1/addresses1
+Content-Type: application/json
+
+{
+  "address_details": "123 New Street",
+  "city": "Hyderabad",
+  "state": "Telangana",
+  "pin_code": "500101"
+}
+
+###
+
+# Get all addresses of customer 1
+GET {{baseUrl}}/customers1/1/addresses1
+Content-Type: application/json
+
+###
+
+# Update an address
+PUT {{baseUrl}}/addresses1/1
+Content-Type: application/json
+
+{
+  "address_details": "456 Updated Street",
+  "city": "Hyderabad",
+  "state": "Telangana",
+  "pin_code": "500102"
+}
+
+###
+
+# Delete an address
+DELETE {{baseUrl}}/addresses1/1
+Content-Type: application/json
