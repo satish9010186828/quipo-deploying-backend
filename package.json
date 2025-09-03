@@ -3,5 +3,11 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "sqlite3": "^5.1.7"
-  }
+  },
+  "scripts": {
+  "postinstall": "npm rebuild sqlite3 --build-from-source"
 }
+
+}
+
+
